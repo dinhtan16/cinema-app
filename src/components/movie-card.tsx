@@ -12,8 +12,8 @@ interface MovieCardProps {
 export function MovieCard({ movie }: MovieCardProps) {
   return (
     <Link href={`/movie/${movie.id}`}>
-      <Card className="overflow-hidden border-0 bg-secondary/20 hover:bg-secondary/40 transition-colors group h-full flex flex-col">
-        <div className="relative aspect-[2/3] overflow-hidden">
+      <Card className="overflow-hidden border-0 bg-secondary/20 hover:bg-secondary/40 transition-colors group flex flex-col w-[260px] h-[370px]">
+        <div className="relative w-full h-2/3 overflow-hidden">
           <Image
             src={movie.poster}
             alt={movie.title}
@@ -25,8 +25,8 @@ export function MovieCard({ movie }: MovieCardProps) {
             {movie.rating}
           </div>
         </div>
-        <CardContent className="p-4 flex-1">
-          <h3 className="font-bold text-lg line-clamp-1 group-hover:text-primary transition-colors">
+        <CardContent className="p-1 flex-1">
+          <h3 className="font-bold text-sm line-clamp-1 group-hover:text-primary transition-colors">
             {movie.title}
           </h3>
           <div className="flex flex-wrap gap-2 mt-2">
@@ -37,7 +37,7 @@ export function MovieCard({ movie }: MovieCardProps) {
             ))}
           </div>
         </CardContent>
-        <CardFooter className="p-4 pt-0 text-sm text-muted-foreground flex items-center gap-2">
+        <CardFooter className="p-1 pt-0 text-sm text-muted-foreground flex items-center gap-2">
           <Clock className="h-4 w-4" />
           {movie.duration} phút
         </CardFooter>

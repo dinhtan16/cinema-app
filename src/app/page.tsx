@@ -7,15 +7,15 @@ export default function Home() {
   const featuredMovies = movies.slice(0, 3);
 
   return (
-    <div className="space-y-12 pb-10">
+    <div className="container mx-auto space-y-12 pb-10 px-4">
       {/* Hero Section */}
       <section className="relative w-full">
         <HeroCarousel movies={featuredMovies} />
       </section>
 
       {/* Promotions Slider Section */}
-      <section className="container space-y-8">
-        <div className="flex items-center justify-between">
+      <section className="space-y-8">
+        <div className="flex items-center justify-between px-4 sm:px-0">
           <h2 className="text-3xl font-bold tracking-tight">
             Khuyến mãi hot 🔥
           </h2>
@@ -26,7 +26,7 @@ export default function Home() {
             Xem tất cả →
           </Link>
         </div>
-        <div className="flex gap-6 overflow-x-auto pb-4 scrollbar-hide">
+        <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide">
           {[
             {
               id: 1,
@@ -62,24 +62,21 @@ export default function Home() {
             <Link
               key={promo.id}
               href="/promotions"
-              className="group relative shrink-0 w-96 h-56 rounded-2xl overflow-hidden border-2 border-white/10 hover:border-primary/50 transition-all hover:scale-105 hover:shadow-2xl hover:shadow-primary/20"
+              className="group relative shrink-0 w-full sm:w-96 h-56 rounded-2xl overflow-hidden border-2 border-white/10 hover:border-primary/50 transition-all hover:scale-105 hover:shadow-2xl hover:shadow-primary/20"
             >
               {/* Background gradient */}
               <div
                 className={`absolute inset-0 bg-gradient-to-br ${promo.gradient} opacity-90`}
               />
-
               {/* Background image */}
               <div
                 className="absolute inset-0 bg-cover bg-center opacity-20 mix-blend-overlay"
                 style={{ backgroundImage: `url(${promo.image})` }}
               />
-
               {/* Badge */}
               <div className="absolute top-4 right-4 px-3 py-1 bg-white/20 backdrop-blur-md rounded-full text-xs font-bold text-white border border-white/30">
                 {promo.badge}
               </div>
-
               {/* Content */}
               <div className="relative h-full p-8 flex flex-col justify-between text-white">
                 <div>
@@ -106,22 +103,24 @@ export default function Home() {
       </section>
 
       {/* Now Showing Section */}
-      <section className="container space-y-8">
+      <section className="space-y-8 px-4 sm:px-0">
         <div className="flex items-center justify-between">
           <h2 className="text-3xl font-bold tracking-tight">Phim đang chiếu</h2>
           <Link href="/movies" className="text-primary hover:underline">
             Xem tất cả
           </Link>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-2">
           {movies.map((movie) => (
-            <MovieCard key={movie.id} movie={movie} />
+            <div key={movie.id} className="flex-none w-full sm:w-auto">
+              <MovieCard movie={movie} />
+            </div>
           ))}
         </div>
       </section>
 
       {/* Coming Soon Section (Mocked with same data for now) */}
-      <section className="container space-y-8">
+      <section className="space-y-8 px-4 sm:px-0">
         <div className="flex items-center justify-between">
           <h2 className="text-3xl font-bold tracking-tight">Sắp chiếu</h2>
           <Link
@@ -131,9 +130,14 @@ export default function Home() {
             Xem tất cả
           </Link>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {movies.slice(2, 5).map((movie) => (
-            <MovieCard key={`coming-${movie.id}`} movie={movie} />
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-2">
+          {movies.slice(0, 7).map((movie) => (
+            <div
+              key={`coming-${movie.id}`}
+              className="flex-none w-full sm:w-auto"
+            >
+              <MovieCard movie={movie} />
+            </div>
           ))}
         </div>
       </section>

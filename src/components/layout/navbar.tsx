@@ -54,9 +54,25 @@ export function Navbar() {
     setSearchQuery("");
   };
 
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 0);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-background/60 backdrop-blur-xl supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 items-center justify-between">
+    <header
+      className={`fixed z-50 transition-all duration-300 border-white/10 bg-background/30 backdrop-blur-xl supports-[backdrop-filter]:bg-background/30 ${
+        scrolled
+          ? "top-6 left-1/2 -translate-x-1/2 w-[95%] max-w-7xl rounded-2xl border shadow-lg"
+          : "top-0 left-0 w-full border-b"
+      }`}
+    >
+      <div className="flex h-16 items-center justify-between px-4">
         <div className="flex items-center gap-8">
           <Link
             href="/"

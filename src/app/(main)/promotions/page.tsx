@@ -72,7 +72,7 @@ export default function PromotionsPage() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {promotions.map((promo) => (
             <Card
               key={promo.id}
@@ -95,7 +95,7 @@ export default function PromotionsPage() {
               </div>
 
               {/* Content */}
-              <div className="relative p-8 text-white space-y-4 min-h-[280px] flex flex-col">
+              <div className="relative p-8 text-white space-y-4 min-h-[200px] flex flex-col">
                 <div>
                   <h3 className="text-3xl font-black mb-2 drop-shadow-lg">
                     {promo.title}
